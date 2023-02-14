@@ -80,6 +80,7 @@ def rolling_input(conn):
         lol = (f'cur[-4:-1]cur[-1]').lower()
         if lol == "exit" or lol == "exit()":
             break
+        #Checks if it is the end of the statement
         if cur[-1].strip() == ';':
             try:
                 sel = conn.execute(cur)
