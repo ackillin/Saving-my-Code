@@ -15,4 +15,9 @@ addd = ("add on",)
 tupel += addd
 print(tupel)
 """
-print(float(5))
+#Sum = N
+#Total Length of Arr = K
+arr = [[0 for _ in range(K+1)] for _ in range(N+1)]
+def find_stuff(N,K):
+    while len(arr) < K:
+        arr.append()
