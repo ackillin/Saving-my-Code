@@ -53,6 +53,23 @@ def countnums(N,arr):
                 break
     return count
 """
+def countnums(N,arr,**cool):
+    primers = [True] * (N+1)
+    dicty = {}
+    arr.sort()
+    print(type(dicty))
+    
+    for x in range(N):
+        dicty.update({arr[x]:primers[x]})
+    dicty[0]=dicty[1] = False
+    for i in range(2,N):
+        if dicty[i]:
+            for j in range(i*2,N,i):
+                print(j%i)
+                if j % i == 0:
+                    dicty[j] = False
+    return [x for x in range(2,N) if dicty[x]]
+
 #Correct answer
 SETUP_CODE_FIVE = """
 def countnums(N,arr):
@@ -79,9 +96,10 @@ def countnums(N,arr):
             ans+=1
     return ans
 """
+
 def rands(N):
     import random
-    return [random.randrange(100) for _ in range(N)]
+    return [random.randrange(10) for _ in range(N)]
 
 if __name__ == "__main__":
     import timeit
@@ -90,6 +108,8 @@ if __name__ == "__main__":
     N = 10
     arr = rands(N)
     #print(timeit.timeit(setup = SETUP_CODE_TWO,stmt = f'countnums({N},{arr})'))
-    print(timeit.timeit(setup=SETUP_CODE_THREE,stmt=f'countnums({N},{arr})'))
+    #print(timeit.timeit(setup=SETUP_CODE_THREE,stmt=f'countnums({N},{arr})'))
     #print(timeit.timeit(setup=SETUP_CODE_FOUR,stmt=f'countnums({N},{arr})'))
-    print(timeit.timeit(setup=SETUP_CODE_FIVE,stmt=f'countnums({N},{arr})'))
+    #print(timeit.timeit(setup=SETUP_CODE_FIVE,stmt=f'countnums({N},{arr})'))
+    print(arr)
+    print(countnums(N,arr))
